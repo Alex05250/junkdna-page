@@ -484,3 +484,51 @@ body {
         padding-bottom: 0.35rem;
     }
 }
+/* 目录列表：issue contents */
+.toc-list {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0.5rem;
+}
+
+.toc-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    padding: 0.4rem 0.9rem;
+    border-radius: 0.75rem;
+
+    background: #f9fafb;               /* 很浅的灰底 */
+    transition: background 0.15s ease, 
+                transform 0.15s ease, 
+                box-shadow 0.15s ease;
+}
+
+.toc-list li + li {
+    margin-top: 0.3rem;
+}
+
+.toc-list li:hover {
+    background: #eef2ff;               /* Hover 时稍微偏蓝一点 */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(15,23,42,0.06);
+}
+
+.toc-list a {
+    color: #111827;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.toc-list a:hover {
+    text-decoration: none;             /* 不要下划线 */
+}
+
+/* 让右边的标签在这一行里更紧凑一点 */
+.toc-list .article-type {
+    font-size: 0.75rem;
+    white-space: nowrap;
+    margin-left: 0.5rem;
+}
