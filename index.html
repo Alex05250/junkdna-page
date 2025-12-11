@@ -39,19 +39,17 @@
         .muted {
             color: #9ca3af;
         }
-        .typing {
-            display: inline-block;
-            position: relative;
-        }
-        .typing::after {
-            content: "";
-            position: absolute;
-            right: -0.15em;
-            top: 0;
-            width: 0.12em;
-            height: 1.2em;
-            background: #facc15;
-            animation: blink 0.9s steps(1) infinite;
+      .typing {
+    display: inline;
+    border-right: 0.12em solid #facc15;  /* 光标 */
+    animation: blink 0.9s steps(1) infinite;
+}
+
+/* 防止旧的 ::after 产生干扰 */
+.typing::after {
+    content: none;
+}
+
         }
         @keyframes blink {
             0%, 50% { opacity: 1; }
@@ -147,6 +145,7 @@
 </script>
 </body>
 </html>
+
 
 
 
