@@ -1,0 +1,486 @@
+/* 基础重置 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, -webkit-system-font,
+    "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #f5f5f8;
+    color: #202020;
+    line-height: 1.6;
+}
+
+/* 容器与布局 */
+.container {
+    width: 100%;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* 头部导航 */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(250, 250, 252, 0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.brand-title {
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.brand-subtitle {
+    font-size: 0.75rem;
+    color: #777;
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.9rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #303030;
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+}
+
+.main-nav a:hover {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.nav-login {
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+/* Hero 区域 */
+.hero {
+    padding: 3rem 0 2.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    background: radial-gradient(circle at 0 0, #ffffff, #f5f5f8);
+}
+
+.hero-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.5fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: 2.1rem;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.75rem;
+}
+
+.hero-tagline {
+    font-size: 0.98rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.55rem 1.2rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: #111;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #000;
+}
+
+.btn-outline {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #222;
+}
+
+.btn-outline:hover {
+    background: rgba(0, 0, 0, 0.03);
+}
+
+.hero-meta {
+    align-self: flex-start;
+}
+
+.hero-badge {
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    padding: 0.75rem 0.9rem;
+    background: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.75rem;
+}
+
+.badge-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.badge-content {
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 0.15rem;
+}
+
+.hero-note {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* 通用 section */
+.section {
+    padding: 2.75rem 0;
+}
+
+.section-header {
+    margin-bottom: 1.75rem;
+}
+
+.section-header h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.25rem;
+}
+
+.section-subtitle {
+    font-size: 0.82rem;
+    color: #888;
+}
+
+/* 本期焦点 */
+.section-current {
+    background: #fafafc;
+}
+
+.current-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+    gap: 2rem;
+}
+
+.feature-card {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 14px 30px rgba(15, 15, 25, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.feature-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #999;
+    margin-bottom: 0.5rem;
+}
+
+.feature-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.feature-title a {
+    text-decoration: none;
+    color: #111;
+}
+
+.feature-title a:hover {
+    text-decoration: underline;
+}
+
+.feature-meta {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.9rem;
+}
+
+.feature-summary {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 1rem;
+}
+
+.editor-note {
+    padding: 0.9rem 1rem;
+    background: #f7f7fb;
+    border-radius: 12px;
+    border-left: 3px solid #111;
+    font-size: 0.86rem;
+    color: #333;
+    margin-bottom: 0.9rem;
+}
+
+.editor-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 0.2rem;
+}
+
+.feature-read {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #111;
+}
+
+.feature-read:hover {
+    text-decoration: underline;
+}
+
+/* 本期列表 */
+.current-list {
+    padding-top: 0.35rem;
+}
+
+.current-list h4 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.article-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.article-list a {
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: #222;
+}
+
+.article-list a:hover {
+    text-decoration: underline;
+}
+
+.article-type {
+    display: inline-block;
+    margin-left: 0.35rem;
+    font-size: 0.72rem;
+    padding: 0.05rem 0.4rem;
+    border-radius: 999px;
+    background: #eee;
+    color: #666;
+}
+
+/* 往期回顾 */
+.section-archive {
+    background: #f5f5f8;
+}
+
+.archive-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.4fr);
+    gap: 1.5rem;
+}
+
+.issue-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 1.2rem 1.3rem;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.issue-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 0.4rem;
+}
+
+.issue-title {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+}
+
+.issue-title a {
+    text-decoration: none;
+    color: #111;
+}
+
+.issue-title a:hover {
+    text-decoration: underline;
+}
+
+.issue-summary {
+    font-size: 0.88rem;
+    color: #444;
+    margin-bottom: 0.7rem;
+}
+
+.issue-link {
+    font-size: 0.82rem;
+    text-decoration: none;
+    color: #111;
+}
+
+.issue-link:hover {
+    text-decoration: underline;
+}
+
+/* 关于 & 投稿简版 */
+.section-two-column {
+    background: #ffffff;
+}
+
+.two-col-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.3fr);
+    gap: 2rem;
+}
+
+.info-block h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.info-block p {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.bullet-list {
+    margin-left: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.bullet-list li {
+    font-size: 0.88rem;
+    color: #444;
+    margin-bottom: 0.25rem;
+}
+
+.text-link {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: #111;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+/* 页脚 */
+.site-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    background: #f8f8fa;
+    padding: 1.2rem 0 1.5rem;
+    font-size: 0.82rem;
+    color: #666;
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.footer-brand {
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+}
+
+.footer-note {
+    font-size: 0.78rem;
+    color: #888;
+}
+
+.footer-right a {
+    text-decoration: none;
+    color: #444;
+}
+
+.footer-right a:hover {
+    text-decoration: underline;
+}
+
+.footer-divider {
+    margin: 0 0.3rem;
+}
+
+/* 响应式 */
+@media (max-width: 840px) {
+    .hero-inner,
+    .current-grid,
+    .archive-grid,
+    .two-col-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .main-nav {
+        flex-wrap: wrap;
+        padding-bottom: 0.35rem;
+    }
+}
