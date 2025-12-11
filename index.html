@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>junkdna.page · Rubbish Biology</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="junkdna.page：一个从垃圾 DNA 开始的小小开场白。">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui,
+            "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background: radial-gradient(circle at top, #111827, #020617);
+            color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .wrapper {
+            max-width: 720px;
+            padding: 1.5rem;
+        }
+        .line {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 0.8rem;
+            color: #e5e7eb;
+        }
+        .highlight {
+            color: #facc15;
+        }
+        .muted {
+            color: #9ca3af;
+        }
+        .typing {
+            display: inline-block;
+            position: relative;
+        }
+        .typing::after {
+            content: "";
+            position: absolute;
+            right: -0.15em;
+            top: 0;
+            width: 0.12em;
+            height: 1.2em;
+            background: #facc15;
+            animation: blink 0.9s steps(1) infinite;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            50.01%, 100% { opacity: 0; }
+        }
+        .small-note {
+            margin-top: 1.8rem;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+        .small-note span {
+            color: #e5e7eb;
+        }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div id="content">
+        <!-- 动画文字会被 JS 填充到这里 -->
+    </div>
+    <div class="small-note">
+        <span>junkdna.page</span> — 被叫做“垃圾”的部分，有时只是还没来得及被理解。
+    </div>
+</div>
+
+<script>
+    // 每一行要打的内容
+    const lines = [
+        "DNA 记录了生命那些被写进剧本的部分。",
+        "“<span class='highlight'>垃圾 DNA</span>” 一度被认为是多余、无用、可以被忽略的噪音。",
+        "但谁知道呢 —— 也许真正的转折，就藏在这些被丢进回收站的片段里。"
+    ];
+
+    const typingSpeed = 55;      // 每个字符的间隔（毫秒）
+    const linePause = 650;       // 每行打完后的停顿
+    const finalPause = 1300;     // 全部打完后再停顿一会再跳转
+    const targetUrl = "https://alex05250.github.io/junkdna/"; // ←← 在这里填你的主站 URL
+
+    const contentEl = document.getElementById("content");
+
+    let lineIndex = 0;
+    let charIndex = 0;
+    let currentLineHtml = "";
+
+    function typeNextChar() {
+        if (lineIndex >= lines.length) {
+            // 全部打完，稍等一下再跳转
+            setTimeout(() => {
+                if (targetUrl && targetUrl !== "TARGET_URL_HERE") {
+                    window.location.href = targetUrl;
+                }
+            }, finalPause);
+            return;
+        }
+
+        const line = lines[lineIndex];
+
+        // 为了支持包含 HTML span 的行，这里用纯字符串拆分
+        // 简单做法：直接按字符取，插入到一个 span 容器里
+        // 为了避免破坏 HTML 标签，这里我们不拆标签，只拆文本，干净的办法是直接用 text-only 行。
+        // 但我们这里只有少量 span，用一个简单的方案处理：
+
+        // 把 line 当作普通字符串逐字符输出，这样 HTML 标签也是一个一个打出来的，
+        // 效果就是 span 颜色会在标签完整输出后生效，看起来也还挺自然。
+        currentLineHtml += line.charAt(charIndex);
+        renderLines();
+
+        charIndex++;
+        if (charIndex < line.length) {
+            setTimeout(typeNextChar, typingSpeed);
+        } else {
+            // 当前行结束，换到下一行
+            lineIndex++;
+            charIndex = 0;
+            // 换行：在 DOM 中增加一个 <div class="line">
+            currentLineHtml = "";
+            setTimeout(typeNextChar, linePause);
+        }
+    }
+
+    function renderLines() {
+        // 根据当前行索引，把已完成的行 + 正在打的行渲染出来
+        let html = "";
+        for (let i = 0; i < lineIndex; i++) {
+            html += `<div class="line">${lines[i]}</div>`;
+        }
+        html += `<div class="line"><span class="typing">${currentLineHtml}</span></div>`;
+        contentEl.innerHTML = html;
+    }
+
+    // 开始打字
+    typeNextChar();
+</script>
+</body>
+</html>
